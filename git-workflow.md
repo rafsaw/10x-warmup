@@ -177,6 +177,66 @@ git push
 
 ---
 
+### Creating a New Branch for a New Module/Exercise
+
+When starting a new module or exercise, create a fresh branch from `master`:
+
+**Step 1: Sync master with the original repo**
+
+```bash
+cd C:\Users\rafal\repos\10xDevs2\10x-warmup
+
+git checkout master
+git fetch upstream
+git pull --rebase upstream master
+```
+
+This ensures your new branch starts from the latest code.
+
+**Step 2: Create the new branch from master**
+
+```bash
+git checkout -b 10xdevs2-10x-warmup-module02
+# (or any name: module03, exercise-name, etc.)
+```
+
+This creates and switches to the new branch.
+
+**Step 3: Push the new branch to your fork**
+
+```bash
+git push -u origin 10xdevs2-10x-warmup-module02
+```
+
+This pushes it to GitHub and sets upstream tracking (so future `git push` works automatically).
+
+**Verify it worked:**
+
+```bash
+git branch -vv
+```
+
+You should see your new branch with tracking info.
+
+**Complete example:**
+
+```bash
+# 1) Sync master
+git checkout master
+git fetch upstream
+git pull --rebase upstream master
+
+# 2) Create new branch
+git checkout -b 10xdevs2-10x-warmup-module02
+
+# 3) Push to your fork
+git push -u origin 10xdevs2-10x-warmup-module02
+```
+
+Now you can work on `10xdevs2-10x-warmup-module02` independently from your other branches.
+
+---
+
 ### Making Changes and Committing
 
 # Make sure you're on your working branch
