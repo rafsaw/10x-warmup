@@ -1,0 +1,64 @@
+[
+  {
+    "id": 1,
+    "firstName": "John",
+    "lastName": "Smith",
+    "age": 28
+  },
+  {
+    "id": 2,
+    "firstName": "Emma",
+    "lastName": "Johnson",
+    "age": 34
+  },
+  {
+    "id": 3,
+    "firstName": "Michael",
+    "lastName": "Williams",
+    "age": 42
+  },
+  {
+    "id": 4,
+    "firstName": "Sophia",
+    "lastName": "Brown",
+    "age": 25
+  },
+  {
+    "id": 5,
+    "firstName": "James",
+    "lastName": "Jones",
+    "age": 31
+  },
+  {
+    "id": 6,
+    "firstName": "Olivia",
+    "lastName": "Garcia",
+    "age": 29
+  },
+  {
+    "id": 7,
+    "firstName": "William",
+    "lastName": "Miller",
+    "age": 45
+  },
+  {
+    "id": 8,
+    "firstName": "Ava",
+    "lastName": "Davis",
+    "age": 27
+  },
+  {
+    "id": 9,
+    "firstName": "Benjamin",
+    "lastName": "Rodriguez",
+    "age": 38
+  },
+  {
+    "id": 10,
+    "firstName": "Isabella",
+    "lastName": "Martinez",
+    "age": 33
+  }
+]
+
+

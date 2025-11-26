@@ -1,0 +1,7 @@
+## run using Bun:
+bun run quickstart.ts
+
+CTRL+K
+CTRL+L
+
+## CTRL Shift P and searching for Keyboard Shortcuts
