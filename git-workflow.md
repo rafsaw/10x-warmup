@@ -112,6 +112,71 @@ git push**What this does:**
 
 ---
 
+### Two Approaches to Managing Your Work
+
+You have two options for organizing your work:
+
+#### Approach 1: Single Branch (Recommended for Learning)
+
+Keep all your work on one branch (`rafal-10x-warmup`) and regularly sync it with the original repo. This is simpler and keeps everything in one place.
+
+**When to use:**
+- You're learning and want simplicity
+- All your work is related training exercises
+- You don't need to separate different tasks
+
+**Workflow:**
+- Use the "Getting Latest Changes" section above
+- All your commits go to `rafal-10x-warmup`
+- One branch to manage
+
+#### Approach 2: Feature Branches (More Organized)
+
+Create separate branches for each exercise or task, then optionally merge them back to your main branch.
+
+**When to use:**
+- You want to practice professional workflows
+- You're working on multiple unrelated exercises
+- You want cleaner, more organized history
+
+**How to create a feature branch:**
+
+```bash
+# 1) First, sync master with original repo
+git checkout master
+git fetch upstream
+git pull --rebase upstream master
+
+# 2) Create a NEW branch for a specific exercise
+git checkout -b rafal/banking-exercise
+# (or: rafal/cursor-training, rafal/charts-task, etc.)
+
+# 3) Do your work, commit, push
+# ... edit files ...
+git add .
+git commit -m "feat: complete banking exercise"
+git push -u origin rafal/banking-exercise
+
+# 4) Optional: Merge feature branch back to your main branch
+git checkout rafal-10x-warmup
+git merge rafal/banking-exercise
+git push
+```
+
+**Pros:**
+- Clean separation of work
+- Easy to see what each exercise added
+- Can delete feature branches when done
+- Professional workflow practice
+
+**Cons:**
+- More branches to manage
+- Might be overkill for simple learning
+
+**Recommendation:** Start with Approach 1 (single branch) for simplicity. Use Approach 2 when you want more organization or are practicing professional workflows.
+
+---
+
 ### Making Changes and Committing
 
 # Make sure you're on your working branch
@@ -183,10 +248,101 @@ git push    # Make sure everything is on your fork---
 - **`master`**: Should always match `upstream/master` (the original).
   - Keep it clean. Don't do your work here.
   - Use it as a "sync point" to get latest changes.
+  - **Important:** You should sync your fork's `master` with the original, but **never merge your work into it**.
 
 - **`rafal-10x-warmup`** (or your branch name): Your working branch.
   - All your training work happens here.
   - You commit and push this branch to your fork.
+
+#### Keeping Your Fork's Master Clean
+
+**✅ DO: Keep your fork's master in sync with the original repo**
+
+```bash
+# Update YOUR fork's master to match original repo
+git checkout master
+git fetch upstream
+git pull --rebase upstream master
+git push origin master    # Push to YOUR fork's master
+```
+
+This keeps your fork's `master` aligned with `przeprogramowani/10x-warmup`.
+
+**❌ DON'T: Merge your work into your fork's master**
+
+```bash
+# ❌ DON'T do this:
+git checkout master
+git merge rafal-10x-warmup    # This would mess up your master
+```
+
+**Why not:**
+- Your fork's `master` would diverge from the original
+- Makes it harder to sync with upstream later
+- Your work belongs on feature branches, not `master`
+
+**Summary:**
+- Your fork's `master` → matches `upstream/master` (original repo)
+- Your work → `rafal-10x-warmup` (or other feature branches)
+- Don't merge your work into `master`
+
+This keeps everything clean and makes syncing straightforward.
+
+---
+
+## Identifying Where a Repo Comes From
+
+When you have multiple repos from different GitHub accounts, here's how to identify the source:
+
+### Check Remote URLs
+
+In any repo folder, run:
+
+```bash
+git remote -v
+```
+
+This shows all configured remotes and their URLs. Example output:
+
+```
+origin    https://github.com/rafsaw/10x-warmup.git (fetch)
+origin    https://github.com/rafsaw/10x-warmup.git (push)
+upstream  https://github.com/przeprogramowani/10x-warmup.git (fetch)
+upstream  https://github.com/przeprogramowani/10x-warmup.git (push)
+```
+
+**What this tells you:**
+- **`origin`** → Usually your fork or the repo you cloned from (where you push/pull)
+- **`upstream`** → The original repo (if configured, read-only)
+- The **GitHub username** in the URL shows which account owns the repo
+
+### Check Current Branch Tracking
+
+```bash
+git branch -vv
+```
+
+Shows which branch you're on and which remote branch it tracks.
+
+### See All Remote Branches
+
+```bash
+git branch -r
+```
+
+Lists all remote branches from all configured remotes.
+
+### Quick Identification
+
+The `git remote -v` output is usually enough to identify:
+- **Which GitHub account** owns the repo (from the URL)
+- **Whether it's a fork** (if `upstream` exists, it's likely a fork)
+- **Where you're pushing/pulling** from (`origin`)
+
+**Example scenarios:**
+- If `origin` points to `rafsaw/repo-name` → You're working with your own fork
+- If `origin` points to `other-account/repo-name` → You cloned from someone else's repo
+- If `upstream` exists → You have a fork setup (original repo is `upstream`)
 
 ---
 
